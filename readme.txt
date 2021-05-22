@@ -55,11 +55,11 @@ Vous pouvez activer le parefeu sur vos serveurs distant avec un ensemble de règ
 Vous pouvez activer le parefeu sur vos serveurs distant avec un ensemble de règles minimal permettant le bon fonctionnement de wordpress.
 Pour ce faire, vous devrez fournir l' adresse de serveur DNS utilisé par vos serveurs. Si vous souhaitez utiliser vos propres scripts de règles iptables, copiez les dans le dossier caché .wp et donnez leur le même noms que les fichiers déja présents (wpfw.source et mariafw.source) après avoir renommé ou supprimé ces derniers.
 Le fichier parefeu.service crée un service systemd pour le chargement de ces règles au démarrage. Si vous souhaitez utiliser votre propre fichier, nommez-le parefeu.service également. Notez que ce service s'appellera dorénavant parefeu.service. Si cela ne vous convient pas, vous devrez le renommer ultérieurement. 
-<<<<<<< HEAD
+
 Notez que l'accès SSH sera configuré uniquement pour le client que vous utilisez pour lancer ce script. Si vous avez reçu votre adresse ip par dhcp, il se peut que vous perdiez cet accès ultérieurement suite à une nouvelle attribution d'adresse. Prenez donc vos précautions en la matière, afin, soit de conserver votre adresse actuelle de manière pérenne, soit en paramétrant vos règles de pare-feu de manière adéquate après l'installation dans le fichier /etc/init.d/parefeu.sh.
 =======
 Notez aussi que l'accès SSH sera configuré uniquement pour le client que vous utilisez pour lancer ce script. Si vous avez reçu votre adresse ip par dhcp, il se peut que vous perdiez cet accès ultérieurement suite à une nouvelle attribution d'adresse. Prenez donc vos précautions en la matière, afin, soit de conserver votre adresse actuelle de manière pérenne, soit en paramétrant vos règles de pare-feu de manière adéquate après l'installation.
->>>>>>> b39b766e37a86aee5e05e6af43ab134bc208a2d9
+
 
 ---------------------------------------------------------------------------------------------------
 4)Dépannage
