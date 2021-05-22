@@ -1,0 +1,14 @@
+#######################NE RENOMMEZ PAS CE FICHIER, NE LE MODIFIEZ PAS!!!!!!!##########################################
+[Unit]
+Description=Firewall
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=root
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/bash /etc/init.d/parefeu.sh start
+
+[Install]
+WantedBy=multi-user.target

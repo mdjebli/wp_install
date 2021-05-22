@@ -1,0 +1,56 @@
+#################################################################################################################################################################
+#CE FICHIER CONTIENT UN ENSEMBLE DE REGLES MINIMAL POUR ACTIVER LE PAREFEU SUR LE SERVEUR WORDPRESS. ADAPTEZ ET AJOUTEZ DES REGLES SELON VOS EXIGENCES SI NECESSAIRE
+##############    NE RENOMMEZ PAS CE FICHIER!!!!!        ########################################################################################################
+
+PATH=$PATH:/sbin/
+
+#Effacer regles
+iptables -F
+iptables -X
+
+#Politique par defaut
+iptables -P OUTPUT DROP
+iptables -P INPUT DROP
+iptables -P FORWARD DROP
+
+#Autorisation de boucle locale
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A OUTPUT -o lo -j ACCEPT
+
+#Connections etablies et reliees
+iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+
+########################################################################################
+####################### REGLES SERVEUR WORDPRESS ##########################################
+########################################################################################
+
+#REGLES ENTRANTES
+
+#SSH 
+iptables -A INPUT -p tcp -s ADRESSE_IP_SOURCE --dport 22 -j ACCEPT
+
+#WEB ENTRANT
+iptables -A INPUT -m multiport -p tcp --dports 80,443 -j ACCEPT 
+
+
+#REGLES SORTANTES
+
+#ICMP SORTANT
+iptables -A OUTPUT -p icmp -j ACCEPT
+
+#DNS (port 53 tcp/udp)
+iptables -A OUTPUT -p tcp -d ADRESSE_IP_DE_VOTRE_SERVEUR_DNS --dport 53 -j ACCEPT
+iptables -A OUTPUT -p udp -d ADRESSE_IP_DE_VOTRE_SERVEUR_DNS --dport 53 -j ACCEPT
+
+#WEB SORTANT (ports 80 et 443)
+iptables -A OUTPUT -m multiport -p tcp --dports 80,443 -j ACCEPT 
+
+#Mysql/mariadb
+iptables -A OUTPUT -p tcp -d ADRESSE_IP_DE_VOTRE_SERVEUR_MARIADB --dport 3306 -j ACCEPT
+
+
+
+
+
+
