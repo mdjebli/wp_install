@@ -296,7 +296,7 @@ print("\033[2;31;47mLe nom de la base de données est: " + nombdd)
 print("\033[2;31;47mLe nom d'utilisateur est: " +  userwpbdd )
 print("\033[2;31;47mLe mot de passe est: "+ mdpbdd )
 print("\033[2;31;47mL'adresse de la base de données Mariadb pour Wordpress est: " + ipbdd )
-print("\033[2;31;47m Attention! Votre parefeu n'autorise l'accès SSH qu'à votre adresse IP actuelle, à savoir" + iplocale) 
+print("\033[2;31;47m Attention! Votre parefeu n'autorise l'accès SSH qu'à votre adresse IP actuelle, à savoir " + iplocale) 
 print("\033[2;31;47m Si cette dernière est amenée à changer prochainement, vous n'aurez plus accès à vos serveurs.")
 print("\033[2;31;47m Veillez donc à vérifiez vos règles de parefeu (fichier /etc/init.d/parefeu.sh) ou à garder votre adresse actuelle en tant qu'IP fixe!")
 
