@@ -1,0 +1,42 @@
+Fiche technique du programme wp_install
+
+
+1-Présentation
+wp_install permet l'installation de wordpress et de sa base de données (mariadb) de manière totalement automatisée sur des serveurs Debian séparés depuis un client Debian/Ubuntu.
+L'utilisateur n'a qu'à entrer les informations nécessaires au lancement du programme.
+
+2-Fonctionnement global
+le programme se conpose de 2 scripts: un script écrit en bash et un script python.
+
+Le script bash (wp_start) a deux fonctions. D'une part, il permet le recueil des informations nécessaires à l'installation sous formes d'entrées au clavier.
+Ces informations sont recueillies dans des variables lesquelles sont exportées en tant que variables d'environnement afin de pouvoir être exploitées par le script Python.
+D'autre part, ce script installe Python3 ainsi que le module complémentaire apprlée paramiko qui permet d'exécuter des commandes sur des machines distantes.
+
+Le script python (wp_install) se compose de plusieurs fonctions qui effectuent les tâches suivantes, communes aux deux serveurs, après avoir initialisé ses variables en recueillant les variables d'environnement précédemment mentionnées:
+
+-renommage de la machine distantes
+-test de connection
+-mise à jour
+-activation et paramétrage du parefeu
+-rechargement du service SSH ou reboot si un nouveau nouay a été téléchargé pendant la mise à jour
+
+Il effectue aussi les taches suivantes, spécifiques au serveurs wordpress et mariadb
+
+wordpress:
+-téléchargement des paquets nécessaires au fonctionnement de wordpress, à savoir essentiellement le serveur web apache2 et php
+-téléchargement et configuration de wordpress
+
+mariadb
+-téléchargement et configuration de mariadb
+-création de la base de données et de l'utilisateur pour wordpress
+
+
+Ces tâches sont exécutés à distance grâce au module paramiko qui s'appuie sur une connection en ssh.
+Sa mise en oeuvre nécessite donc la génération de clés ssh sur le client et la copie de ces dernières sur les serveurs cibles. 
+
+Toutes ces sous-fonctions sont réunies au sein de deux grandes fonctions propres à chaques machines afin d'être appelées de manière séquentielle.
+
+
+
+
+
