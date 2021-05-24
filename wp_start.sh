@@ -26,6 +26,7 @@ mv wpfw.source wpfw
 mv mariafw.source mariafw 
 mv parefeu.service.source parefeu.service
 iplocale=$(hostname -I | cut -d ' ' -f1)
+export iplocale
 sed -i s/ADRESSE_IP_SOURCE/$iplocale/g wpfw
 sed -i s/ADRESSE_IP_SOURCE/$iplocale/g mariafw
 sed -i s/ADRESSE_IP_DE_VOTRE_SERVEUR_DNS/$dns/g wpfw
