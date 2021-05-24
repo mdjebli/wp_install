@@ -16,7 +16,7 @@ mdpbdd = os.environ['mdpbdd']
 nombdd = os.environ['nombdd']
 nomMachine = os.environ['nomMachine']
 fw_ok = os.environ['fw_ok']
-
+iplocale = os.environ['iplocale']
 #Capture de l'ID de l'utilisateur pour la personnalisation de l'accueil
 id_session = getpass.getuser()
 
