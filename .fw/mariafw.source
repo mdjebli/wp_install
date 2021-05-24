@@ -1,5 +1,6 @@
- 
+################################################################################################################################################################## 
 #CE FICHIER CONTIENT UN ENSEMBLE DE REGLES MINIMAL POUR ACTIVER LE PAREFEU SUR LE SERVEUR MARIADB. ADAPTEZ ET AJOUTEZ DES REGLES SELON VOS EXIGENCES SI NECESSAIRE
+#############    NE RENOMMEZ PAS CE FICHIER!!!!!        ##########################################################################################################
 #!/bin/bash
 PATH=$PATH:/sbin/
 
